@@ -1,0 +1,34 @@
+URoPE
+Copyright (c) 2026 Applied Intuition, Inc.
+
+This product includes software developed at Applied Intuition, Inc.
+(https://www.appliedintuition.com/).
+
+Licensed under the Apache License, Version 2.0. See the LICENSE file for
+the full license text. The original copyright and permission notices for the
+third-party software listed below are reproduced in the THIRD_PARTY_LICENSES
+file.
+
+--------------------------------------------------------------------------
+Third-party software
+--------------------------------------------------------------------------
+
+1. PRoPE
+   Files: urope/prope.py, urope/rope2d.py, urope/urope.py
+   These files are adapted from the reference implementation released by
+   the authors of "PRoPE: Projective Positional Encoding for Multiview
+   Transformers", distributed under the MIT License. The original MIT
+   license notice is reproduced in the THIRD_PARTY_LICENSES file.
+
+2. PyTorch
+   File: urope/utils/transformer.py
+   Portions are modified from the PyTorch transformer implementation
+   (https://github.com/pytorch/pytorch), distributed under the
+   BSD-3-Clause License.
+
+3. Crowdsampling-the-Plenoptic-Function
+   File: nvs/perceptual.py
+   Derived from
+   https://github.com/zhengqili/Crowdsampling-the-Plenoptic-Function.
+   NOTE: the upstream repository does not declare a license; usage is
+   pending legal review.
