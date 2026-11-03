@@ -227,7 +227,7 @@ def _prepare_apply_fns(
         [0, -1, 0, 0],
         [0, 0, -1, 0],
         [0, 0, 0, 1],
-    ]).to(device)
+    ], dtype=viewmats.dtype, device=device)
     viewmats = coordinate_transforms[None, None] @ viewmats # (batch, cameras, 4, 4)
     num_cameras = viewmats.shape[1]
     # now viewmats is `camera<-world` transform (x-right, y-down, z-forward).
@@ -240,7 +240,7 @@ def _prepare_apply_fns(
     img_x = (grid_x + 0.5) * (image_width / patches_x)
     img_y = (grid_y + 0.5) * (image_height / patches_y)
     img_z = torch.ones_like(img_x)
-    img_xyz = torch.stack([img_x, img_y, img_z], dim=-1).to(device)  # (patch_y, patch_x, 3)
+    img_xyz = torch.stack([img_x, img_y, img_z], dim=-1).to(device=device, dtype=viewmats.dtype)  # (patch_y, patch_x, 3)
     img_xyz = img_xyz.reshape(-1, 3)[None, None].repeat(batch, cameras, 1, 1)  # (batch, cameras, patch_num, 3)
     cam_xyz = img_xyz @ Ks_inv.transpose(-1, -2) # (batch, cameras, patch_num, 3)
     cam_xyz_pad = torch.cat([cam_xyz, torch.ones_like(cam_xyz[..., :1])], dim=-1) # (batch, cameras, patch_num, 4)
